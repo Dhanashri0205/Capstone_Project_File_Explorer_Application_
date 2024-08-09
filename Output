@@ -1,0 +1,120 @@
+rps@rps-virtual-machine:~/FileExplorer$ ./FileExplorer
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 5
+Enter file name to create: dhanashri1.txt
+File created successfully.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 5
+Enter file name to create: souvik1.txt
+File created successfully.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 2
+Enter source file name: dhanashri1.txt
+Enter destination file name: newtest.txt
+File copied successfully.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 3
+Enter source file name: dhanashri1.txt
+Enter destination file name: todattest.txt
+File moved successfully.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 4
+Enter file name to delete: todattest.txt
+File deleted successfully.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 6
+Enter file name to search: souvik1.txt
+File found.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 7
+Enter file name to set permissions: souvik1.txt
+Enter permissions (e.g., 755): 777
+Permissions set successfully.
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 1
+Enter directory path: /home/rps/FileExplorer
+"/home/rps/FileExplorer/src"
+"/home/rps/FileExplorer/newtest.txt"
+"/home/rps/FileExplorer/Bittu.txt"
+"/home/rps/FileExplorer/Souvik.txt"
+"/home/rps/FileExplorer/include"
+"/home/rps/FileExplorer/testing.txt"
+"/home/rps/FileExplorer/souvik1.txt"
+"/home/rps/FileExplorer/FileExplorer"
+"/home/rps/FileExplorer/file_explorer.log"
+"/home/rps/FileExplorer/Praneeth.txt"
+File Explorer Options:
+1. List Files in Directory
+2. Copy File
+3. Move File
+4. Delete File
+5. Create File
+6. Search File
+7. Set File Permissions
+8. Exit
+Enter your choice: 8  
+Exiting...
