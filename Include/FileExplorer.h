@@ -1,3 +1,4 @@
+FILE EXPLORER.H
 #ifndef FILEEXPLORER_H
 #define FILEEXPLORER_H
 
@@ -7,7 +8,7 @@
 class FileExplorer {
 public:
     explicit FileExplorer(Logger& logger);
-
+    
     void listFiles(const std::string& directory);
     bool copyFile(const std::string& src, const std::string& dest);
     bool moveFile(const std::string& src, const std::string& dest);
