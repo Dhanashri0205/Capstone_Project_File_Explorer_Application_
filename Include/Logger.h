@@ -1,4 +1,3 @@
-LOGGER.H
 #ifndef LOGGER_H
 #define LOGGER_H
 
@@ -15,3 +14,5 @@ private:
 };
 
 #endif // LOGGER_H
+
+LOGGER.H
