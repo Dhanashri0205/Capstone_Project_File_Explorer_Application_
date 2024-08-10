@@ -11,6 +11,7 @@ int main() {
     int permissions;
 
     do {
+        std::cout << "\nCurrent Directory: " << std::filesystem::current_path() << std::endl;
         std::cout << "File Explorer Options:\n";
         std::cout << "1. List Files in Directory\n";
         std::cout << "2. Copy File\n";
@@ -19,7 +20,9 @@ int main() {
         std::cout << "5. Create File\n";
         std::cout << "6. Search File\n";
         std::cout << "7. Set File Permissions\n";
-        std::cout << "8. Exit\n";
+        std::cout << "8. Change Directory\n";
+        std::cout << "9. Go Up One Directory\n";
+        std::cout << "10. Exit\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
 
@@ -97,6 +100,16 @@ int main() {
                 break;
 
             case 8:
+                std::cout << "Enter directory to navigate to: ";
+                std::cin >> path;
+                explorer.changeDirectory(path);
+                break;
+
+            case 9:
+                explorer.goUpOneDirectory();
+                break;
+
+            case 10:
                 std::cout << "Exiting...\n";
                 break;
 
@@ -104,7 +117,7 @@ int main() {
                 std::cout << "Invalid choice. Please try again.\n";
         }
 
-    } while (choice != 8);
+    } while (choice != 10);
 
     return 0;
 }
