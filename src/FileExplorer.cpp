@@ -6,7 +6,7 @@ FILEEXPLORER.CPP
 #include <unistd.h>
 #include <sys/stat.h>
 
-FileExplorer::FileExplorer(Logger& logger) : logger_(logger) {}
+FileExplorer::FileExplorer(Logger& logger) : logger_(logger), currentDirectory_(std::filesystem::current_path().string()) {}
 
 void FileExplorer::listFiles(const std::string& directory) {
     logger_.log("Listing files in directory: " + directory);
@@ -94,5 +94,27 @@ bool FileExplorer::setPermissions(const std::string& path, int permissions) {
     } catch (const std::exception& e) {
         logger_.log("Setting permissions failed: " + std::string(e.what()));
         return false;
+    }
+}
+
+void FileExplorer::changeDirectory(const std::string& directory) {
+    logger_.log("Changing directory to: " + directory);
+    try {
+        std::filesystem::current_path(directory);
+        currentDirectory_ = std::filesystem::current_path().string();
+        logger_.log("Directory changed successfully.");
+    } catch (const std::exception& e) {
+        logger_.log("Change directory failed: " + std::string(e.what()));
+    }
+}
+
+void FileExplorer::goUpOneDirectory() {
+    logger_.log("Going up one directory level.");
+    try {
+        std::filesystem::current_path("..");
+        currentDirectory_ = std::filesystem::current_path().string();
+        logger_.log("Directory changed successfully.");
+    } catch (const std::exception& e) {
+        logger_.log("Going up one directory failed: " + std::string(e.what()));
     }
 }
