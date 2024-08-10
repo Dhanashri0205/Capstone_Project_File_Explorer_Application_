@@ -1,111 +1,110 @@
-#include "file_explorer.h"
-#include "Logger.h"
+MAIN.CPP
 #include <iostream>
-#include <string>
-#include <sstream>
+#include "FileExplorer.h"
+#include "Logger.h"
 
 int main() {
-    Logger logger("fileexplorer.log");
-    FileExplorer explorer;
-    
-    std::string input;
-    std::string command;
-    std::string argument;
+    Logger logger("file_explorer.log");
+    FileExplorer explorer(logger);
+    int choice;
+    std::string path, src, dest, filename;
+    int permissions;
 
-    logger.log("File Explorer application started");
+    do {
+        std::cout << "File Explorer Options:\n";
+        std::cout << "1. List Files in Directory\n";
+        std::cout << "2. Copy File\n";
+        std::cout << "3. Move File\n";
+        std::cout << "4. Delete File\n";
+        std::cout << "5. Create File\n";
+        std::cout << "6. Search File\n";
+        std::cout << "7. Set File Permissions\n";
+        std::cout << "8. Exit\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
 
-    while (true)
-    {
-        std::cout << "FileExplorer> ";
-        std::getline(std::cin, input);
+        switch (choice) {
+            case 1:
+                std::cout << "Enter directory path: ";
+                std::cin >> path;
+                explorer.listFiles(path);
+                break;
 
-        std::istringstream iss(input);
-        iss >> command;
+            case 2:
+                std::cout << "Enter source file name: ";
+                std::cin >> src;
+                std::cout << "Enter destination file name: ";
+                std::cin >> dest;
+                if (explorer.copyFile(src, dest)) {
+                    std::cout << "File copied successfully.\n";
+                } else {
+                    std::cout << "File copy failed.\n";
+                }
+                break;
 
+            case 3:
+                std::cout << "Enter source file name: ";
+                std::cin >> src;
+                std::cout << "Enter destination file name: ";
+                std::cin >> dest;
+                if (explorer.moveFile(src, dest)) {
+                    std::cout << "File moved successfully.\n";
+                } else {
+                    std::cout << "File move failed.\n";
+                }
+                break;
 
-        if (command == "list")
-       	{
-            explorer.listFiles(".");
-            logger.log("Listed files in the current directory");
+            case 4:
+                std::cout << "Enter file name to delete: ";
+                std::cin >> path;
+                if (explorer.deleteFile(path)) {
+                    std::cout << "File deleted successfully.\n";
+                } else {
+                    std::cout << "File delete failed.\n";
+                }
+                break;
+
+            case 5:
+                std::cout << "Enter file name to create: ";
+                std::cin >> path;
+                if (explorer.createFile(path)) {
+                    std::cout << "File created successfully.\n";
+                } else {
+                    std::cout << "File creation failed.\n";
+                }
+                break;
+
+            case 6:
+                std::cout << "Enter file name to search: ";
+                std::cin >> filename;
+                if (explorer.searchFile(filename)) {
+                    std::cout << "File found.\n";
+                } else {
+                    std::cout << "File not found.\n";
+                }
+                break;
+
+            case 7:
+                std::cout << "Enter file name to set permissions: ";
+                std::cin >> path;
+                std::cout << "Enter permissions (e.g., 755): ";
+                std::cin >> permissions;
+                if (explorer.setPermissions(path, permissions)) {
+                    std::cout << "Permissions set successfully.\n";
+                } else {
+                    std::cout << "Setting permissions failed.\n";
+                }
+                break;
+
+            case 8:
+                std::cout << "Exiting...\n";
+                break;
+
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
         }
 
-       	else if (command == "cd")
-       	{
-            std::cout << "Enter directory: ";
-            std::getline(std::cin, argument);
-            explorer.changeDirectory(argument);
-            std::cout << "Changed directory to " << argument << std::endl;
-            logger.log("Changed directory to " + argument);
-        }
-
-       	else if (command == "search")
-
-       	{
-            std::cout << "Enter filename to search: ";
-            std::getline(std::cin, argument);
-            explorer.searchFiles(".", argument);
-            logger.log("Searched for file: " + argument);
-        }
-
-       	else if (command == "chmod")
-       	{
-            std::string filename;
-            int mode;
-            std::cout << "Enter filename: ";
-            std::getline(std::cin, filename);
-            std::cout << "Enter mode (e.g., 755): ";
-            std::cin >> mode;
-            std::cin.ignore(); // Ignore newline left in the buffer
-            explorer.setPermissions(filename, mode);
-            std::cout << "Changed permissions for " << filename << " to " << mode << std::endl;
-            logger.log("Changed permissions for file: " + filename + " to " + std::to_string(mode));
-        }
-
-       	else if (command == "create")
-       	{
-            iss >> argument;
-            explorer.createFile(argument);
-            std::cout << "File created: " << argument << std::endl;
-            logger.log("Created file: " + argument);
-        }
-
-       	else if (command == "copy")
-       	{
-            std::string source, destination;
-            iss >> source >> destination;
-            explorer.copyFile(source, destination);
-            std::cout << "File copied from " << source << " to " << destination << std::endl;
-            logger.log("Copied file from " + source + " to " + destination);
-        }
-
-       	else if (command == "move")
-       	{
-            std::string source, destination;
-            iss >> source >> destination;
-            explorer.moveFile(source, destination);
-            std::cout << "File moved from " << source << " to " << destination << std::endl;
-            logger.log("Moved file from " + source + " to " + destination);
-        }
-       
-	else if (command == "delete")
-       	{
-            iss >> argument;
-            explorer.deleteFile(argument);
-            std::cout << "File deleted: " << argument << std::endl;
-            logger.log("Deleted file: " + argument);
-        }
-       
-	else if (command == "exit")
-       	{
-            logger.log("Exiting application");
-            break;
-        }
-       
-	else
-       	{
-            std::cout << "Unknown command: " << command << std::endl;
-        }
-    }
+    } while (choice != 8);
 
     return 0;
 }
