@@ -1,85 +1,4 @@
-Fri Aug  9 20:07:37 2024
-: Creating file: home/rps/FileExplorer
-Fri Aug  9 20:07:37 2024
-: File creation failed.
-Fri Aug  9 20:08:10 2024
-: Creating file: home/rps/FileExplorer/Souvik.txt
-Fri Aug  9 20:08:10 2024
-: File creation failed.
-Fri Aug  9 20:08:39 2024
-: Listing files in directory: home/rps/FileExplorer
-Fri Aug  9 20:09:26 2024
-: Listing files in directory: home/rps/FileExplorer
-Fri Aug  9 20:11:12 2024
-: Listing files in directory: /home/rps/FileExplorer
-Fri Aug  9 20:11:43 2024
-: Creating file: /home/rps/FileExplorer/Souvik.txt
-Fri Aug  9 20:11:43 2024
-: File created successfully.
-Fri Aug  9 20:12:01 2024
-: Listing files in directory: /home/rps/FileExplorer
-Fri Aug  9 20:12:54 2024
-: Listing files in directory: /home/rps/FileExplorer
-Fri Aug  9 20:13:03 2024
-: Creating file: /home/rps/FileExplorer
-Fri Aug  9 20:13:03 2024
-: File creation failed.
-Fri Aug  9 20:13:49 2024
-: Creating file: /home/rps/FileExplorer/Dhanashri.txt
-Fri Aug  9 20:13:49 2024
-: File created successfully.
-Fri Aug  9 20:15:08 2024
-: Copying file from /home/rps/FileExplorer/Souvik.txt to /home/rps/FileExplorer/newfile.txt
-Fri Aug  9 20:15:08 2024
-: File copied successfully.
-Fri Aug  9 20:16:43 2024
-: Moving file from /home/rps/FileExplorer/Dhanashri.txt to /home/rps/FileExplorer/newfile.txt
-Fri Aug  9 20:16:43 2024
-: File moved successfully.
-Fri Aug  9 20:17:20 2024
-: Listing files in directory: /home/rps/FileExplorer
-Fri Aug  9 20:17:59 2024
-: Deleting file: /home/rps/FileExplorer/newfile.txt
-Fri Aug  9 20:17:59 2024
-: File deleted successfully.
-Fri Aug  9 20:29:03 2024
-: Creating file: /home/rps/FileExplorer/test.txt
-Fri Aug  9 20:29:03 2024
-: File created successfully.
-Fri Aug  9 20:29:32 2024
-: Creating file: /home/rps/FileExplorer/testing.txt
-Fri Aug  9 20:29:32 2024
-: File created successfully.
-Fri Aug  9 20:31:19 2024
-: Copying file from /home/rps/FileExplorer/test.txt to /home/rps/FileExplorer/src/test1.txt
-Fri Aug  9 20:31:19 2024
-: File copied successfully.
-Fri Aug  9 20:31:40 2024
-: Listing files in directory: /home/rps/FileExplorer/src
-Fri Aug  9 20:33:35 2024
-: Moving file from /home/rps/FileExplorer/test.txt to /home/rps/FileExplorer/src
-Fri Aug  9 20:33:35 2024
-: Move failed: filesystem error: cannot rename: Is a directory [/home/rps/FileExplorer/test.txt] [/home/rps/FileExplorer/src]
-Fri Aug  9 20:34:58 2024
-: Moving file from /home/rps/FileExplorer/test.txt to /home/rps/FileExplorer/src/test.txt
-Fri Aug  9 20:34:58 2024
-: File moved successfully.
-Fri Aug  9 20:36:02 2024
-: Deleting file: /home/rps/FileExplorer/src/test1.txt
-Fri Aug  9 20:36:02 2024
-: File deleted successfully.
-Fri Aug  9 20:37:05 2024
-: Searching for file: testing.txt in directory: /home/rps/FileExplorer/src/testing.txt
-Fri Aug  9 20:38:06 2024
-: Searching for file: testing.txt in directory: /home/rps/FileExplorer
-Fri Aug  9 20:38:06 2024
-: File found: /home/rps/FileExplorer/testing.txt
-Fri Aug  9 20:39:10 2024
-: Setting file permissions for /home/rps/FileExplorer to 777
-Fri Aug  9 20:39:10 2024
-: Permissions set successfully.
-Fri Aug  9 20:39:37 2024
-: Listing files in directory: /home/rps/FileExplorer
+LOGGER
 Creating file: Praneeth.txt
 File created successfully.
 Listing files in directory: /home/rps/FileExplorer
@@ -101,3 +20,37 @@ File found: ./souvik1.txt
 Setting permissions for file: souvik1.txt
 Permissions set successfully.
 Listing files in directory: /home/rps/FileExplorer
+Listing files in directory: /home/rps/FileExplorer
+Listing files in directory: /home/rps/FileExplorer/src
+Creating file: Saturday.txt
+File created successfully.
+Listing files in directory: /home/rps/FileExplorer
+Listing files in directory: /home/rps/FileExplorer
+Creating file: Souvik1.txt
+File created successfully.
+Changing directory to: src
+Directory changed successfully.
+Creating file: Praneeth1.txt
+File created successfully.
+Listing files in directory: /home/rps/FileExplorer/src
+Listing files in directory: /home/rps/FileExplorer
+Copying file from souvik1.txt to testing.txt
+Copy failed: filesystem error: cannot copy: File exists [souvik1.txt] [testing.txt]
+Copying file from souvik1.txt to new_souvik1.txt
+File copied successfully.
+Moving file from Bittu.txt to new_souvik1.txt
+File moved successfully.
+Deleting file: new_souvik1.txt
+File deleted successfully.
+Creating file: Praneeth1.txt
+File created successfully.
+Searching for file: Praneeth.txt
+File found: ./Praneeth.txt
+Searching for file: test.txt
+File found: ./src/test.txt
+Setting permissions for file: Praneeth1.txt
+Permissions set successfully.
+Changing directory to: src
+Directory changed successfully.
+Going up one directory level.
+Directory changed successfully.
