@@ -1,0 +1,9 @@
+rps@rps-virtual-machine:~/FileExplorer$ make
+g++ -std=c++17 -Wall -Wextra -Iinclude -I/usr/include -o FileExplorer src/main.o src/file_explorer.o src/Logger.o
+rps@rps-virtual-machine:~/FileExplorer$ make test
+g++ -std=c++17 -Wall -Wextra -Iinclude -I/usr/include -o test_file_explorer test/test_file_explorer.o src/file_explorer.o src/Logger.o -lCppUTest -lCppUTestExt
+./test_file_explorer
+"test_dir/file1.txt"
+"test_dir/file2.txt"
+.........
+OK (9 tests, 9 ran, 16 checks, 0 ignored, 0 filtered out, 7 ms)
