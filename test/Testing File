@@ -1,0 +1,113 @@
+#include "CppUTest/CommandLineTestRunner.h"
+#include "CppUTest/TestHarness.h"
+#include "FileExplorer.h"
+#include "Logger.h"
+#include <string>
+#include <vector>
+#include <fstream>
+#include <filesystem>
+
+// Test Group for FileExplorer
+TEST_GROUP(FileExplorerTest) {
+    Logger* logger;
+    FileExplorer* explorer;
+
+    void setup() override {
+        logger = new Logger("test_log.log");
+        explorer = new FileExplorer(*logger);
+
+    }
+
+    void teardown() override {
+        delete explorer;
+        delete logger;
+        std::filesystem::remove("test_log.log"); // Clean up the log file after each test
+    }
+};
+
+// Test cases
+
+TEST(FileExplorerTest, CreateFile) {
+    std::string filePath = "test_file.txt";
+    CHECK(explorer->createFile(filePath));
+    CHECK(std::filesystem::exists(filePath));
+    std::filesystem::remove(filePath); // Clean up
+}
+
+TEST(FileExplorerTest, DeleteFile) {
+    std::string filePath = "test_file_to_delete.txt";
+    explorer->createFile(filePath);
+    CHECK(explorer->deleteFile(filePath));
+    CHECK(!std::filesystem::exists(filePath));
+}
+
+TEST(FileExplorerTest, CopyFile) {
+    std::string srcPath = "test_file_src.txt";
+    std::string destPath = "test_file_dest.txt";
+    explorer->createFile(srcPath);
+    CHECK(explorer->copyFile(srcPath, destPath));
+    CHECK(std::filesystem::exists(destPath));
+    std::filesystem::remove(srcPath); // Clean up
+    std::filesystem::remove(destPath); // Clean up
+}
+
+TEST(FileExplorerTest, MoveFile) {
+    std::string srcPath = "test_file_src_move.txt";
+    std::string destPath = "test_file_dest_move.txt";
+    explorer->createFile(srcPath);
+    CHECK(explorer->moveFile(srcPath, destPath));
+    CHECK(!std::filesystem::exists(srcPath));
+    CHECK(std::filesystem::exists(destPath));
+    std::filesystem::remove(destPath); // Clean up
+}
+
+TEST(FileExplorerTest, SetPermissions) {
+    std::string filePath = "test_file_permissions.txt";
+    explorer->createFile(filePath);
+    CHECK(explorer->setPermissions(filePath, 0644)); // Example permission
+    std::filesystem::remove(filePath); // Clean up
+}
+
+TEST(FileExplorerTest, ChangeDirectory) {
+    std::string newDir = "/home/rps/FileExplorer";
+    explorer->changeDirectory(newDir);
+    CHECK_EQUAL(newDir, std::filesystem::current_path().string());
+}
+
+TEST(FileExplorerTest, GoUpOneDirectory) {
+    std::string initialDir = std::filesystem::current_path().string();
+    explorer->goUpOneDirectory();
+    std::string parentDir = std::filesystem::current_path().string();
+    CHECK(parentDir != initialDir);
+}
+TEST(FileExplorerTest, SearchFile) {
+    std::string filePath = "test_file_to_search.txt";
+    explorer->createFile(filePath);
+    CHECK(explorer->searchFile("test_file_to_search.txt"));
+    CHECK(!explorer->searchFile("non_existent_file.txt"));
+    std::filesystem::remove(filePath); // Clean up
+}
+
+TEST(FileExplorerTest, ListFiles) {
+    std::string dirPath = "test_dir";
+    std::filesystem::create_directory(dirPath);
+
+    std::string filePath1 = dirPath + "/file1.txt";
+    std::string filePath2 = dirPath + "/file2.txt";
+
+    explorer->createFile(filePath1);
+    explorer->createFile(filePath2);
+
+    explorer->listFiles(dirPath); // This will list files to stdout
+
+    CHECK(std::filesystem::exists(filePath1));
+    CHECK(std::filesystem::exists(filePath2));
+
+    std::filesystem::remove(filePath1); // Clean up
+    std::filesystem::remove(filePath2); // Clean up
+    std::filesystem::remove(dirPath); // Clean up
+}
+// Main entry point for the tests
+int main(int argc, char** argv) {
+    return CommandLineTestRunner::RunAllTests(argc, argv);
+}
